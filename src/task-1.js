@@ -31,18 +31,13 @@ alert(`Сейчас в онлайн следующие пользователи:
  * @returns Online only users name
  */
 function getOnlineUsers(allUsers, onlineOnlyUsers) {
-  onlineUsersNames = '';
+  onlineUsersNames = [];
   users.forEach(user => {
     if (user.status === 'online') {
       onlineOnlyUsers.push(user);
-      onlineUsersNames += user.username + ', ';
+      onlineUsersNames.push(user.username);
     }
   })
 
-  // remove last comma
-  const lastCommaIndex = onlineUsersNames.lastIndexOf(',');
-  if (lastCommaIndex !== -1)
-    onlineUsersNames = onlineUsersNames.slice(0, lastCommaIndex);
-
-  return onlineUsersNames;
+  return onlineUsersNames.toString();
 }
